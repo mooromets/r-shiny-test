@@ -2,19 +2,24 @@ library(shiny)
 library(DT)
 
 shinyUI(fluidPage(
-  sidebarLayout(
-    sidebarPanel(
-      h4("Input"),
-      dateInput("date1", "date", value = date(), format = "yyyy-mm-dd"),
-      textInput("what", "what", value = ""),
-      textInput("sum", "sum", value = ""),
-      actionButton("submit", "Submit"),
-      width = 3
-    ),
-    mainPanel(
-      h3("Table"),
-      DT::dataTableOutput("responses", width = 500)
+  fluidRow(
+    column(2, 
+           dateInput("date1", "date", value = date(), format = "yyyy-mm-dd")
+           ),
+    column(3,
+           textInput("what", "what", value = "")
+           ),
+    column(2,
+           textInput("sum", "sum", value = "")
+           )
+  ),
+  fluidRow(
+    column(4, offset = 1,
+      actionButton("submit", "Submit", style="color: #fff; background-color: #337ab7; 
+                   border-color: #2e6da4", width = '100%')
     )
-  )
+  ),
+  hr(),
+  DT::dataTableOutput("responses", width = 500)
 ))
 
