@@ -1,17 +1,19 @@
 library(shiny)
+library(DT)
+
 shinyUI(fluidPage(
-  titlePanel(""),
   sidebarLayout(
     sidebarPanel(
-      h2("Input"),
+      h4("Input"),
       dateInput("date1", "date", value = date(), format = "yyyy-mm-dd"),
       textInput("what", "what", value = ""),
       textInput("sum", "sum", value = ""),
-      submitButton("Send")
+      actionButton("submit", "Submit"),
+      width = 3
     ),
     mainPanel(
-      h3("Output"),
-      textOutput("text")
+      h3("Table"),
+      DT::dataTableOutput("responses", width = 500)
     )
   )
 ))
