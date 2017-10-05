@@ -20,6 +20,6 @@ shinyUI(fluidPage(
     )
   ),
   hr(),
-  DT::dataTableOutput("responses", width = 500)
+  DT::dataTableOutput("responses")
 ))
 
